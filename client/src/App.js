@@ -1,4 +1,11 @@
 import React, { useEffect, useState} from 'react'
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Chats from './components/Chats';
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [backendData, setBD] = useState([{}])
@@ -12,6 +19,7 @@ function App() {
       }
     )
   }, [])
+
   return (
     <div>
       {(typeof backendData.users === "undefined") ? (
@@ -21,6 +29,12 @@ function App() {
           <p key={i}>{user}</p>
         ))
       )}
+      <h1> Facebook </h1>
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/chats" element={<Chats />} />
+      </Routes>
     </div>
   )
 }
